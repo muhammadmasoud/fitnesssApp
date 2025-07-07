@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.app {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  flex: 1 0 auto; /* Ensures main takes up available space but allows footer to be at the bottom */
+}
+
+footer {
+  flex-shrink: 0; /* Prevents footer from shrinking */
+  margin-top: auto; /* Pushes footer to the bottom if content is short */
+}
+
+/* Basic styling without animations */
+.app, .main-content, .page-transition {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure no Bootstrap margins affect our layout */
+.container,
+.container-fluid,
+.row {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Reset any potential Bootstrap spacing */
+.no-gutters {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Header Container */
+.header-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styling */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: transparent;
+}
+
+/* Override any Bootstrap navbar background */
+.navbar, .navbar-custom, .navbar-collapse {
+  background-color: transparent !important;
+}
+
+/* Announcement Bar */
+.announcement-bar {
+  background-color: #000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  font-size: 0.9rem;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px;
+  position: relative;
+  z-index: 1001; /* Higher than the navbar */
+}
+
+.announcement-email {
+  display: flex;
+  align-items: center;
+}
+
+.announcement-promotion {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Text styling for the 20% discount */
+.rainbow-text {
+  display: inline-block;
+  font-weight: bold;
+  color: #ff0000; /* Fixed red color instead of animation */
+}
+
+.announcement-social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.announcement-social-icon {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.announcement-social-icon:hover {
+  color: white;
+  opacity: 0.8;
+}
+
+.announcement-social-icon i {
+  font-size: 22px;
+}
+
+/* Original social icons styles kept for backward compatibility */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+/* Custom X (Twitter) icon */
+.fa-brands.fa-x-twitter:before {
+  content: "𝕏";
+  font-family: sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Specific styling for X icon in announcement bar */
+.announcement-social-icon .fa-brands.fa-x-twitter:before {
+  font-size: 22px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+}
+
+/* Ensure no underlines on any social icons */
+a.social-icon,
+a.announcement-social-icon {
+  text-decoration: none;
+}
+
+.main-content {
+  flex: 1;
+  padding: 210px 0 0 0; /* Add padding to account for fixed header (announcement bar + navbar height) */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Class to adjust padding when announcement bar is not visible */
+.main-content-no-announcement {
+  padding-top: 160px !important; /* Reduced padding when announcement bar is hidden */
+}
+
+/* Override Bootstrap container for full-width sections */
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* Utility Classes */
+.text-white {
+  color: white;
+}
+
+.bg-dark {
+  background-color: var(--dark-bg);
+}
+
+.hero-section {
+  height: 100vh;
+  background-color: var(--dark-bg);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-will-change: transform; transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.cta-button {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .announcement-bar {
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+    height: auto;
+  }
+
+  .announcement-promotion {
+    margin: 5px 0;
+  }
+
+  .announcement-social-icons {
+    margin-top: 5px;
+  }
+
+  /* Header styling for mobile */
+  header {
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Ensure navbar has semi-transparent background on mobile */
+  .navbar, .navbar-custom, .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+
+  /* Adjust main content padding for mobile */
+  .main-content {
+    padding-top: 120px; /* Reduced padding for mobile */
+  }
+}

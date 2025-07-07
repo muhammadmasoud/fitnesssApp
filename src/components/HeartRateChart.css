@@ -1,0 +1,100 @@
+.heart-rate-container {
+  background-color: #27293d;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #2c2c43;
+  margin-top: 20px;
+}
+
+.heart-rate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.heart-rate-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #a3a3a3;
+  margin: 0;
+}
+
+.heart-rate-period {
+  font-size: 0.9rem;
+  color: #a3a3a3;
+}
+
+.heart-rate-content {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+
+.heart-rate-chart {
+  flex: 1;
+  position: relative;
+}
+
+.heart-rate-stats {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.heart-rate-day {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.day-label {
+  font-size: 0.8rem;
+  color: #a3a3a3;
+}
+
+.heart-rate-values {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heart-rate-min,
+.heart-rate-max,
+.heart-rate-mid {
+  font-size: 0.8rem;
+  color: #a3a3a3;
+}
+
+.heart-rate-min span,
+.heart-rate-max span,
+.heart-rate-mid span {
+  font-weight: 700;
+  color: #ffffff;
+  margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .heart-rate-container {
+    padding: 15px;
+  }
+  
+  .heart-rate-title {
+    font-size: 1rem;
+  }
+  
+  .heart-rate-period {
+    font-size: 0.8rem;
+  }
+  
+  .heart-rate-content {
+    height: 180px;
+  }
+  
+  .day-label,
+  .heart-rate-min,
+  .heart-rate-max,
+  .heart-rate-mid {
+    font-size: 0.7rem;
+  }
+}

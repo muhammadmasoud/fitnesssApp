@@ -1,0 +1,688 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --accent-color: #ff6b6b;
+  --gradient-start: #4e54c8;
+  --gradient-end: #8f94fb;
+}
+
+.signup-page {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  padding-top: 150px; /* Added padding-top to create space between navbar and signup container */
+}
+
+.text-muted{
+  margin-left: 90px;
+}
+.signup-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  z-index: -2; /* Changed from -1 to -2 to ensure proper layering */
+  overflow: hidden;
+}
+
+.signup-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/optimized/sign-up.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: -1;
+  will-change: transform; will-change: transform; animation: pulse-bg 8s infinite alternate;
+}
+
+.signup-background::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.1) 100%);
+  opacity: 0.4;
+  will-change: transform; will-change: transform; animation: rotate-bg 30s linear infinite;
+  z-index: -1;
+}
+
+@keyframes pulse-bg {
+  0% {
+    opacity: 0.15;
+    will-change: transform; transform: scale(1);
+  }
+  100% {
+    opacity: 0.25;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate-bg {
+  0% {
+    will-change: transform; transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.signup-container { will-change: transform; transform: translateZ(0);
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 255, 0.95));
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  will-change: transform; will-change: transform; animation: container-appear 1s cubic-bezier(0.23, 1, 0.32, 1), gradient-shift 8s ease infinite alternate;
+  position: relative;
+  z-index: 10; /* Increased from 1 to 10 to ensure it's above particles */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  will-change: transform; transition: box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.signup-container::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg,
+    rgba(0, 123, 255, 0),
+    rgba(0, 123, 255, 0.3),
+    rgba(0, 123, 255, 0),
+    rgba(0, 123, 255, 0.3),
+    rgba(0, 123, 255, 0));
+  border-radius: 22px;
+  z-index: -1;
+  will-change: transform; will-change: transform; animation: border-glow 3s linear infinite;
+  opacity: 0;
+  will-change: transform; transition: opacity 0.5s ease;
+}
+
+.signup-container:hover::after {
+  opacity: 1;
+}
+
+@keyframes border-glow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.95));
+  }
+  50% {
+    background: linear-gradient(135deg, rgba(248, 250, 255, 0.95), rgba(255, 255, 255, 0.95));
+  }
+  100% {
+    background: linear-gradient(135deg, rgba(240, 248, 255, 0.95), rgba(245, 245, 255, 0.95));
+  }
+}
+
+.signup-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.signup-container:hover {
+  will-change: transform; transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes container-appear {
+  0% {
+    opacity: 0;
+    will-change: transform; transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.signup-content {
+  padding: 40px;
+  position: relative;
+  z-index: 5; /* Added z-index to ensure content is above particles */
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-header h1 {
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 2.2rem;
+}
+
+.signup-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.input-icon-wrapper { transform: translateZ(0);
+  position: relative;
+  margin-bottom: 5px;
+  will-change: transform; transform: translateY(0);
+  will-change: transform; transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  height: 50px; /* Match the height of the input field */
+}
+
+.input-icon-wrapper:focus-within {
+  will-change: transform; transform: translateY(-5px);
+}
+
+.input-icon { transform: translateZ(0);
+  position: absolute;
+  left: 15px;
+  top: 25px; /* Fixed position from the top instead of percentage */
+  will-change: transform; transform: translateY(-50%);
+  color: #666; /* Darker color for better visibility */
+  z-index: 10; /* Significantly increased z-index */
+  pointer-events: none;
+  width: 30px; /* Increased width for better icon display */
+  height: 30px; /* Increased height to match width */
+  display: flex; /* Added flex display for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  font-size: 14px;
+  will-change: transform; transition: all 0.3s ease;
+  background-color: #ffffff; /* Solid white background */
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  line-height: 1; /* Ensure proper vertical alignment of icon */
+}
+
+.input-icon { will-change: transform; transform: translateZ(0);
+  will-change: transform; will-change: transform; animation: icon-float 3s ease-in-out infinite;
+}
+
+.input-icon-wrapper:focus-within .input-icon { transform: translateZ(0);
+  color: var(--primary-color);
+  will-change: transform; animation: icon-pulse 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  will-change: transform; transform: translateY(-50%); /* Maintain vertical alignment during animation */
+}
+
+@keyframes icon-float {
+  0% {
+    will-change: transform; transform: translateY(-50%) translateX(0) rotate(0deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1);
+  }
+  25% {
+    transform: translateY(-50%) translateX(-2px) rotate(-3deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+  }
+  50% {
+    transform: translateY(-50%) translateX(0) rotate(0deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+  }
+  75% {
+    transform: translateY(-50%) translateX(2px) rotate(3deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+  }
+  100% {
+    transform: translateY(-50%) translateX(0) rotate(0deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1);
+  }
+}
+
+@keyframes icon-pulse {
+  0% {
+    will-change: transform; transform: translateY(-50%) scale(1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1);
+  }
+  30% {
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.2);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.15);
+  }
+  70% {
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(1);
+  }
+}
+
+.form-control { will-change: transform; transform: translateZ(0);
+  padding-left: 50px !important; /* Increased padding to prevent overlap with icon */
+  padding-right: 15px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  will-change: transform; transition: all 0.3s ease;
+  text-indent: 0;
+  color: #333 !important; /* Ensure text color is applied */
+  background-color: #ffffff !important; /* Solid white background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1; /* Lower z-index than the icon */
+  font-weight: normal !important; /* Ensure text is not bold */
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  /* No transform to prevent blur */
+  will-change: transform; will-change: transform; animation: border-pulse 1.5s infinite alternate;
+}
+
+@keyframes border-pulse {
+  0% {
+    border-color: var(--primary-color);
+  }
+  100% {
+    border-color: #5e9eff;
+  }
+}
+
+.form-control.is-valid { will-change: transform; transform: translateZ(0);
+  will-change: transform; animation: valid-pulse 0.5s ease;
+}
+
+.form-control.is-invalid { will-change: transform; transform: translateZ(0);
+  will-change: transform; animation: invalid-shake 0.5s ease;
+}
+
+/* Position feedback messages below input fields */
+.invalid-feedback,
+.valid-feedback {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  text-align: left;
+  padding-left: 0.5rem;
+}
+
+/* Remove the default positioning and icon from Bootstrap */
+.was-validated .form-control:invalid,
+.form-control.is-invalid,
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  background-image: none;
+  padding-right: 0.75rem;
+}
+
+@keyframes valid-pulse {
+  0% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
+  70% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
+  100% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); }
+}
+
+@keyframes invalid-shake {
+  0%, 100% { will-change: transform; transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.signup-btn { transform: translateZ(0);
+  background: linear-gradient(45deg, var(--primary-color), #0056b3);
+  border: none;
+  height: 55px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  will-change: transform; transition: all 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 1px;
+  text-will-change: transform; transform: uppercase;
+  z-index: 1;
+}
+
+.signup-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  will-change: transform; transition: all 0.5s ease;
+}
+
+.signup-btn:hover {
+  will-change: transform; transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  background: linear-gradient(45deg, #0056b3, var(--primary-color));
+}
+
+.signup-btn:hover::before {
+  left: 100%;
+  will-change: transform; will-change: transform; animation: btn-shine 1.5s infinite;
+}
+
+.signup-btn:active {
+  will-change: transform; transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes button-pulse {
+  0% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  70% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.login-prompt {
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+
+.login-link { will-change: transform; transform: translateZ(0);
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  will-change: transform; transition: color 0.3s ease;
+}
+
+.login-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.social-signup {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.social-signup-text {
+  position: relative;
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.social-signup-text::before,
+.social-signup-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.social-signup-text::before {
+  left: 0;
+}
+
+.social-signup-text::after {
+  right: 0;
+}
+
+.social-signup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-btn { will-change: transform; transform: translateZ(0);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform; transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-btn:hover {
+  will-change: transform; transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Particles */
+.particle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Changed from 0 to -1 to ensure it stays behind content */
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15); /* Reduced opacity from 0.3 to 0.15 */
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes float-particle {
+  0% {
+    will-change: transform; transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+.particle-1 { will-change: transform; transform: translateZ(0); width: 10px; height: 10px; left: 10%; will-change: transform; will-change: transform; animation: float-particle 15s infinite linear; animation-delay: 0s; }
+.particle-2 { will-change: transform; transform: translateZ(0); width: 15px; height: 15px; left: 20%; will-change: transform; will-change: transform; animation: float-particle 20s infinite linear; animation-delay: 2s; }
+.particle-3 { will-change: transform; transform: translateZ(0); width: 8px; height: 8px; left: 30%; will-change: transform; will-change: transform; animation: float-particle 18s infinite linear; animation-delay: 4s; }
+.particle-4 { will-change: transform; transform: translateZ(0); width: 12px; height: 12px; left: 40%; will-change: transform; will-change: transform; animation: float-particle 22s infinite linear; animation-delay: 6s; }
+.particle-5 { will-change: transform; transform: translateZ(0); width: 7px; height: 7px; left: 50%; will-change: transform; will-change: transform; animation: float-particle 25s infinite linear; animation-delay: 8s; }
+.particle-6 { will-change: transform; transform: translateZ(0); width: 14px; height: 14px; left: 60%; will-change: transform; will-change: transform; animation: float-particle 17s infinite linear; animation-delay: 10s; }
+.particle-7 { will-change: transform; transform: translateZ(0); width: 9px; height: 9px; left: 70%; will-change: transform; will-change: transform; animation: float-particle 21s infinite linear; animation-delay: 12s; }
+.particle-8 { will-change: transform; transform: translateZ(0); width: 11px; height: 11px; left: 80%; will-change: transform; will-change: transform; animation: float-particle 19s infinite linear; animation-delay: 14s; }
+.particle-9 { will-change: transform; transform: translateZ(0); width: 13px; height: 13px; left: 90%; will-change: transform; will-change: transform; animation: float-particle 23s infinite linear; animation-delay: 16s; }
+.particle-10 { will-change: transform; transform: translateZ(0); width: 6px; height: 6px; left: 15%; will-change: transform; will-change: transform; animation: float-particle 24s infinite linear; animation-delay: 18s; }
+.particle-11 { will-change: transform; transform: translateZ(0); width: 16px; height: 16px; left: 25%; will-change: transform; will-change: transform; animation: float-particle 16s infinite linear; animation-delay: 20s; }
+.particle-12 { will-change: transform; transform: translateZ(0); width: 9px; height: 9px; left: 35%; will-change: transform; will-change: transform; animation: float-particle 26s infinite linear; animation-delay: 22s; }
+.particle-13 { will-change: transform; transform: translateZ(0); width: 12px; height: 12px; left: 45%; will-change: transform; will-change: transform; animation: float-particle 18s infinite linear; animation-delay: 24s; }
+.particle-14 { will-change: transform; transform: translateZ(0); width: 7px; height: 7px; left: 55%; will-change: transform; will-change: transform; animation: float-particle 22s infinite linear; animation-delay: 26s; }
+.particle-15 { will-change: transform; transform: translateZ(0); width: 10px; height: 10px; left: 65%; will-change: transform; will-change: transform; animation: float-particle 20s infinite linear; animation-delay: 28s; }
+
+/* Form Animations */
+.animated-form { transform: translateZ(0);
+  opacity: 1 !important;
+  will-change: transform; transform: translateY(0) !important;
+  will-change: transform; transition: none !important;
+  will-change: opacity, transform;
+  visibility: visible !important;
+}
+
+.form-loaded {
+  opacity: 1 !important;
+  will-change: transform; transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
+.animated-form .form-item { transform: translateZ(0);
+  opacity: 1 !important;
+  will-change: transform; transform: translateY(0) !important;
+  will-change: transform; animation: none !important;
+}
+
+.form-item[data-animation-delay="100"] { animation-delay: 0.1s; }
+.form-item[data-animation-delay="200"] { animation-delay: 0.2s; }
+.form-item[data-animation-delay="300"] { animation-delay: 0.3s; }
+.form-item[data-animation-delay="400"] { animation-delay: 0.4s; }
+.form-item[data-animation-delay="500"] { animation-delay: 0.5s; }
+.form-item[data-animation-delay="600"] { animation-delay: 0.6s; }
+.form-item[data-animation-delay="700"] { animation-delay: 0.7s; }
+.form-item[data-animation-delay="800"] { animation-delay: 0.8s; }
+
+@keyframes form-item-appear {
+  0% {
+    opacity: 0;
+    will-change: transform; transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-input-animation { will-change: transform; transform: translateZ(0);
+  will-change: transform; transition: all 0.3s ease;
+}
+
+.form-input-animation:focus {
+  /* Removed scale transform to prevent blur */
+  border-color: var(--primary-color);
+}
+
+/* Label animation */
+.form-label {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.form-label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--primary-color);
+  will-change: transform; transition: width 0.3s ease;
+}
+
+.input-icon-wrapper:focus-within + .form-label::after,
+.form-control:focus + .form-label::after {
+  width: 100%;
+}
+
+.checkbox-animation { will-change: transform; transform: translateZ(0);
+  will-change: transform; transition: all 0.3s ease;
+}
+
+.checkbox-animation:hover {
+  will-change: transform; transform: scale(1.05);
+}
+
+.btn-shine { transform: translateZ(0);
+  position: absolute;
+  top: -180%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  will-change: transform; transform: rotate(45deg);
+  will-change: transform; will-change: transform; animation: btn-shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes btn-shine {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Base Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    will-change: transform; transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    will-change: transform; transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .signup-content {
+    padding: 30px 20px;
+  }
+
+  .signup-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .social-signup-text::before,
+  .social-signup-text::after {
+    width: 25%;
+  }
+
+  .signup-container {
+    max-width: 90%;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .signup-page {
+    padding-top: 30px; /* Reduced padding for mobile screens */
+  }
+}

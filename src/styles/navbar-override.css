@@ -1,0 +1,36 @@
+/* Override Bootstrap navbar background */
+.navbar,
+.navbar-custom,
+.navbar-collapse,
+.navbar-expand-lg,
+.navbar-light,
+.bg-light,
+.navbar-dark,
+.bg-dark {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Ensure no background on expanded navbar */
+.navbar-collapse.show,
+.navbar-collapse.collapsing {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Override for mobile view */
+@media (max-width: 991px) {
+  .navbar,
+  .navbar-custom,
+  .navbar-collapse,
+  .navbar-expand-lg,
+  .navbar-light,
+  .bg-light,
+  .navbar-dark,
+  .bg-dark,
+  .navbar-collapse.show,
+  .navbar-collapse.collapsing {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+}

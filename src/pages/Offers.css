@@ -1,0 +1,450 @@
+.offers-page { transform: translateZ(0);
+  padding: 120px 0 60px;
+  min-height: 100vh;
+  background-image: url('../assets/optimized/offers.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+  opacity: 0;
+  will-change: transform; transform: translateY(20px);
+  will-change: transform; transition: opacity 0.5s ease, transform 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px; /* Add perspective for 3D effects */
+}
+
+.offers-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.offers-content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.offers-page.loaded {
+  opacity: 1;
+  will-change: transform; transform: translateY(0);
+}
+
+.offers-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.offers-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 116, 217, 0.7);
+}
+
+.offers-subtitle {
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.current-offer-note {
+  text-align: center;
+  background-color: rgba(0, 116, 217, 0.1);
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 16px;
+  border: 1px solid rgba(0, 116, 217, 0.3);
+  width: 80%;
+  max-width: 600px;
+  margin: 1rem auto 0;
+}
+
+.current-offer-note i {
+  color: #0074D9;
+}
+
+.offers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  perspective: 1500px; /* Increased perspective for stronger 3D effects */
+  transform-style: preserve-3d; /* Ensure 3D effects are preserved */
+}
+
+.special-offer-card { will-change: transform; transform: translateZ(0);
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  width: 350px;
+  position: relative;
+  will-change: transform; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0;
+  will-change: transform; animation: cardFadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--card-index, 0) * 0.2s);
+  display: flex;
+  flex-direction: column;
+  height: 450px; /* Fixed height for all cards */
+  overflow: visible; /* Changed from hidden to visible to allow badge to pop out */
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  perspective: 1000px;
+}
+
+.special-offer-card:nth-child(1) { --card-index: 1; }
+.special-offer-card:nth-child(2) { --card-index: 2; }
+.special-offer-card:nth-child(3) { --card-index: 3; }
+
+.special-offer-card:hover {
+  will-change: transform; transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 116, 217, 0.3);
+}
+
+.card-hovered {
+  will-change: transform; transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 116, 217, 0.3);
+}
+
+.special-offer-card.current-offer {
+  position: relative;
+  opacity: 0.8;
+  border: 2px solid #0074D9;
+  will-change: transform; transform: none;
+}
+
+.special-offer-card.current-offer:hover {
+  will-change: transform; transform: translateY(-5px);
+}
+
+.current-offer-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #0074D9;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-glow { will-change: transform; transform: translateZ(0);
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 116, 217, 0.1) 0%,
+    rgba(0, 116, 217, 0) 70%
+  );
+  opacity: 0;
+  will-change: transform; transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.special-offer-card:hover .card-glow { will-change: transform; transform: translateZ(0);
+  opacity: 1;
+  will-change: transform; will-change: transform; animation: pulse-glow 2s infinite;
+}
+
+.card-hovered .card-glow { will-change: transform; transform: translateZ(0);
+  opacity: 1;
+  will-change: transform; will-change: transform; animation: pulse-glow 2s infinite;
+}
+
+.special-offer-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: linear-gradient(135deg, #0056b3, #00a0ff);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.special-offer-heading { transform: translateZ(0);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #1a365d;
+  position: static;
+  will-change: transform; transform: none;
+  min-height: 60px; /* Ensure consistent height for headings */
+  display: flex;
+  align-items: center;
+  will-change: transform; transition: color 0.3s ease;
+}
+
+.special-offer-card:hover .special-offer-heading {
+  color: #0056b3;
+  text-shadow: 0 0 1px rgba(0, 86, 179, 0.2);
+}
+
+.card-hovered .special-offer-heading {
+  color: #0056b3;
+  text-shadow: 0 0 1px rgba(0, 86, 179, 0.2);
+}
+
+.special-offer-description { will-change: transform; transform: translateZ(0);
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  min-height: 80px; /* Ensure consistent height for descriptions */
+  will-change: transform; transition: color 0.3s ease;
+}
+
+.special-offer-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  min-height: 50px; /* Ensure consistent height for price section */
+}
+
+.original-price { will-change: transform; transform: translateZ(0);
+  text-decoration: line-through;
+  color: #999;
+  font-size: 1.1rem;
+  will-change: transform; transition: transform 0.3s ease;
+}
+
+.special-offer-card:hover .original-price {
+  will-change: transform; transform: scale(0.95);
+}
+
+.card-hovered .original-price {
+  will-change: transform; transform: scale(0.95);
+}
+
+.discounted-price { will-change: transform; transform: translateZ(0);
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #0056b3;
+  will-change: transform; transition: all 0.3s ease;
+  position: relative;
+}
+
+.price-animation {
+  position: relative;
+}
+
+.price-animation::before {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #0056b3, #00a0ff);
+  will-change: transform; transition: width 0.3s ease;
+}
+
+.special-offer-card:hover .price-animation::before {
+  width: 100%;
+}
+
+.card-hovered .price-animation::before {
+  width: 100%;
+}
+
+.special-offer-card:hover .discounted-price {
+  will-change: transform; transform: scale(1.05);
+  color: #0074d9;
+  text-shadow: 0 0 10px rgba(0, 116, 217, 0.3);
+}
+
+.card-hovered .discounted-price {
+  will-change: transform; transform: scale(1.05);
+  color: #0074d9;
+  text-shadow: 0 0 10px rgba(0, 116, 217, 0.3);
+}
+
+.special-offer-button { will-change: transform; transform: translateZ(0);
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #0056b3, #0074d9);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  will-change: transform; transition: all 0.3s ease;
+  margin-top: auto; /* Push button to bottom of flex container */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button-text { will-change: transform; transform: translateZ(0);
+  position: relative;
+  z-index: 2;
+  will-change: transform; transition: all 0.3s ease;
+}
+
+.button-shine { will-change: transform; transform: translateZ(0);
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  will-change: transform; transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.special-offer-button:hover {
+  background: linear-gradient(135deg, #003d82, #0056b3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  will-change: transform; transform: translateY(-2px);
+}
+
+.special-offer-button:hover .button-shine { will-change: transform; transform: translateZ(0);
+  will-change: transform; will-change: transform; animation: shine 1.5s infinite;
+}
+
+.offers-footer {
+  text-align: center;
+  margin-top: 60px;
+  color: #fff;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.subscription-policy {
+  margin-top: 10px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+}
+
+@keyframes titleFadeIn {
+  0% {
+    opacity: 0;
+    will-change: transform; transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  0% {
+    opacity: 0;
+    will-change: transform; transform: translateY(30px) rotateX(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.3;
+    will-change: transform; transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes float {
+  0% {
+    will-change: transform; transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .offers-title {
+    font-size: 2.5rem;
+  }
+
+  .special-offer-card {
+    width: 100%;
+    max-width: 400px;
+    height: 450px; /* Maintain fixed height on smaller screens */
+  }
+
+  .special-offer-heading {
+    min-height: 60px; /* Maintain consistent height on smaller screens */
+  }
+
+  .special-offer-description {
+    min-height: 80px; /* Maintain consistent height on smaller screens */
+  }
+
+  .special-offer-price {
+    min-height: 50px; /* Maintain consistent height on smaller screens */
+  }
+}

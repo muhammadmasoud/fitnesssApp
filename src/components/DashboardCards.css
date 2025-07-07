@@ -1,0 +1,284 @@
+/* DashboardCards.css */
+.dashboard-cards-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.dashboard-card-item {
+  flex: 1;
+  min-width: 250px;
+  background-color: #27293d;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #2c2c43;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #a3a3a3;
+  margin: 0;
+}
+
+.card-period {
+  font-size: 0.9rem;
+  color: #a3a3a3;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Heart Rate Card Styles */
+.heart-rate-chart {
+  flex: 1;
+  position: relative;
+  height: 150px;
+}
+
+.heart-rate-info {
+  margin-top: 10px;
+}
+
+.heart-rate-days {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.heart-rate-days span {
+  font-size: 0.8rem;
+  color: #a3a3a3;
+}
+
+.heart-rate-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.heart-rate-stat {
+  display: flex;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #a3a3a3;
+  margin-right: 5px;
+}
+
+.stat-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.heart-rate-date {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #a3a3a3;
+  margin-top: 5px;
+}
+
+/* Meal Card Styles */
+.meal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meal-name {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.meal-amount {
+  font-size: 0.8rem;
+  color: #a3a3a3;
+}
+
+.meal-calories {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ff6b6b;
+}
+
+/* Calories Card Styles */
+.calories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.calories-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nutrient-name {
+  font-size: 0.9rem;
+  color: #ffffff;
+  width: 110px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.progress-fill.proteins {
+  width: 90%;
+  background-color: #7b68ee;
+}
+
+.progress-fill.fats {
+  width: 60%;
+  background-color: #e14eca;
+}
+
+.progress-fill.carbs {
+  width: 120%;
+  background-color: #00f2c3;
+}
+
+.nutrient-value {
+  font-size: 0.9rem;
+  color: #ffffff;
+  width: 45px;
+  text-align: right;
+}
+
+.calories-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.calories-status {
+  margin-top: 10px;
+  text-align: center;
+  color: #a3a3a3;
+  font-size: 0.9rem;
+}
+
+/* Meditation Card Styles */
+.meditation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.meditation-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meditation-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.meditation-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(253, 93, 147, 0.2);
+  color: #fd5d93;
+}
+
+.meditation-info {
+  flex: 1;
+}
+
+.meditation-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.meditation-duration {
+  font-size: 0.8rem;
+  color: #a3a3a3;
+  margin: 0;
+}
+
+.play-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fd5d93;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .dashboard-cards-row {
+    flex-wrap: wrap;
+  }
+
+  .dashboard-card-item {
+    min-width: calc(50% - 20px);
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-card-item {
+    min-width: 100%;
+    flex: 0 0 100%;
+  }
+}

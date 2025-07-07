@@ -1,0 +1,420 @@
+.navbar-custom {
+  background-color: transparent !important;
+  position: relative !important; /* Changed from absolute to relative since header is now fixed */
+  top: -15px !important; /* Move the navbar up by 15px */
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  height: 160px !important; /* Increased height to accommodate much larger logo */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+
+
+/* Add specific spacing for navbar collapse */
+.navbar-collapse {
+  flex-grow: 0 !important; /* Prevent the collapse from taking all available space */
+  margin: 0 !important; /* Reset margin */
+  position: absolute !important; /* Position it absolutely */
+  left: 50% !important; /* Center it horizontally */
+  transform: translateX(-50%) !important; /* Adjust for perfect centering */
+  max-width: 70% !important; /* Limit width to prevent overlap with buttons */
+}
+
+.navbar {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.container {
+  max-width: 1500px !important; /* Further increased max-width from 1400px to 1500px */
+  padding: 0 30px !important;
+  margin: 0 auto !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-animation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-animation {
+  width: 100%;
+  height: 100%;
+  margin-top: 5px;
+}
+
+.brand-text {
+  color: white;
+  font-weight: 800;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: -15px; /* Adjusted margin to align with the logo animation */
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(0, 116, 217, 0.3);
+  position: relative;
+  background: linear-gradient(90deg, #ffffff, #0074D9, #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-nav {
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.2rem !important; /* Adjusted gap between nav links to accommodate larger font */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: white !important;
+  font-weight: 600; /* Increased font weight from 500 to 600 for better visibility */
+  padding: 0.5rem 0.4rem !important; /* Reduced horizontal padding from 0.5rem to 0.4rem */
+  font-size: 1.4rem; /* Further increased font size from 1.25rem to 1.4rem */
+  text-align: center !important;
+  position: relative;
+  letter-spacing: 0.5px; /* Added letter spacing for better readability */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: white;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover::after {
+  width: 70%;
+  opacity: 1;
+}
+
+.nav-link.active {
+  color: #0088ff !important;
+  text-shadow: 0 0 8px rgba(0, 136, 255, 0.5);
+}
+
+.nav-link.active::after {
+  width: 70%;
+  opacity: 1;
+  background-color: #0088ff;
+}
+
+/* Dropdown styling */
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.custom-dropdown .dropdown-toggle {
+  color: white !important;
+  font-weight: 600; /* Increased font weight from 500 to 600 for better visibility */
+  padding: 0.5rem 0.4rem !important; /* Reduced horizontal padding from 0.5rem to 0.4rem */
+  font-size: 1.4rem; /* Further increased font size from 1.25rem to 1.4rem */
+  text-align: center !important;
+  position: relative;
+  letter-spacing: 0.5px; /* Added letter spacing for better readability */
+}
+
+.custom-dropdown .dropdown-toggle::after {
+  margin-left: 0.4em;
+}
+
+.custom-dropdown .dropdown-toggle::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: white;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.custom-dropdown .dropdown-toggle:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.custom-dropdown .dropdown-toggle:hover::before {
+  width: 70%;
+  opacity: 1;
+}
+
+.custom-dropdown.active .dropdown-toggle {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.custom-dropdown.active .dropdown-toggle::before {
+  width: 70%;
+  opacity: 1;
+}
+
+.custom-dropdown .dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-dropdown .dropdown-item {
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.25rem; /* Increased font size to better match the navigation links */
+  font-weight: 500; /* Added font weight for better visibility */
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 20; /* Higher z-index than navbar-collapse */
+  margin-left: auto; /* Push to the right */
+}
+
+.cart-icon-container {
+  position: relative;
+  margin-right: 5px;
+}
+
+.cart-icon-link {
+  color: white;
+  font-size: 1.5rem; /* Increased font size from 1.3rem to 1.5rem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cart-icon-link:hover {
+  color: #0074D9;
+  text-shadow: 0 0 8px rgba(0, 116, 217, 0.5);
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #0074D9;
+  color: white;
+  font-size: 0.8rem; /* Increased font size from 0.7rem to 0.8rem */
+  font-weight: bold;
+  width: 20px; /* Increased width from 18px to 20px */
+  height: 20px; /* Increased height from 18px to 20px */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 15px; /* Increased gap between buttons */
+  align-items: center;
+  margin-left: 20px; /* Add margin to separate from navbar links */
+  position: relative; /* Ensure proper positioning */
+  z-index: 10; /* Higher z-index to prevent overlap */
+}
+
+/* Remove the user-dropdown styles since we're using the UserDropdown component now */
+.user-dropdown {
+  display: none !important;
+}
+
+.track-order-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem; /* Increased font size from 0.9rem to 1.1rem */
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Add gap between icon and text */
+}
+
+.track-order-link i {
+  font-size: 1.2rem; /* Increased icon size */
+}
+
+.track-order-link:hover {
+  color: #0074D9;
+}
+
+/* User dropdown styling */
+.user-dropdown {
+  background-color: #0074D9 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 30px !important;
+  padding: 0.3rem 1.2rem !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  min-width: 150px !important;
+  height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.user-dropdown:hover,
+.user-dropdown:focus,
+.user-dropdown:active {
+  background-color: #0066c0 !important;
+}
+
+.login-btn {
+  background-color: #0074D9 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 30px !important;
+  padding: 0.3rem 1.2rem !important;
+  font-weight: 500;
+  font-size: 1.1rem; /* Increased font size from 0.9rem to 1.1rem */
+  min-width: 100px !important;
+  height: 45px !important; /* Increased height from 42px to 45px */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.login-btn:hover {
+  background-color: #0066c0 !important;
+}
+
+.sign-up-btn {
+  background-color: white !important;
+  color: #000 !important;
+  border: none !important;
+  border-radius: 30px !important;
+  padding: 0.5rem 1.2rem !important;
+  font-weight: 500;
+  font-size: 1.1rem; /* Increased font size from 0.9rem to 1.1rem */
+  height: 45px !important; /* Added height to match login button */
+}
+
+.sign-up-btn:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .navbar-custom {
+    position: relative;
+    top: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Semi-transparent background for mobile */
+    height: auto !important; /* Auto height for mobile */
+  }
+
+  .navbar-collapse {
+    padding: 1rem;
+    margin: 0 -1rem;
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Semi-transparent background for mobile */
+  }
+
+  .nav-link {
+    padding: 0.5rem 0 !important;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    gap: 15px;
+  }
+
+  .cart-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-left: 0; /* Reset margin for mobile */
+  }
+
+  .auth-buttons > div:first-child {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .auth-buttons .nav-item {
+    width: 100%;
+  }
+
+  .login-btn,
+  .sign-up-btn {
+    width: 100%;
+  }
+
+  /* Adjust main content padding for mobile */
+  .main-content {
+    padding-top: 120px; /* Reduced padding for mobile */
+  }
+}

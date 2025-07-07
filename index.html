@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Fitness Tracker - Track your workouts and fitness journey"
+    />
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages or Vercel
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <!-- End Single Page Apps for GitHub Pages -->
+    <link rel="apple-touch-icon" href="./logo192.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="./src/assets/images/logo.gif" as="image" type="image/gif">
+    <link rel="preload" href="./src/index.jsx" as="script" type="module">
+    <link rel="preload" href="./src/App.jsx" as="script" type="module">
+
+    <!-- Resource hints for external resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Prefetch common navigation paths -->
+    <link rel="prefetch" href="./src/pages/Dashboard.jsx" as="script" type="module">
+    <link rel="prefetch" href="./src/pages/Profile.jsx" as="script" type="module">
+    <link rel="prefetch" href="./src/pages/Classes.jsx" as="script" type="module">
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="./src/App.css" as="style">
+    <link rel="preload" href="./src/components/Navigation.css" as="style">
+
+    <title>FITNESS</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="./src/index.jsx"></script>
+  </body>
+</html>

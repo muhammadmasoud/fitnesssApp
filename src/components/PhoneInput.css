@@ -1,0 +1,130 @@
+.country-code-dropdown {
+  min-width: 100px;
+  max-width: 100px;
+  height: 48px;
+}
+
+.phone-input-container {
+  position: relative;
+}
+
+.form-group label {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-group {
+  display: flex;
+  width: 100%;
+}
+
+.country-code-toggle {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem 0 0 0.25rem;
+  min-width: 100px;
+  max-width: 100px;
+  height: 48px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.country-code-toggle:hover,
+.country-code-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.country-code-menu {
+  max-height: 350px;
+  overflow-y: auto;
+  width: 320px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0;
+}
+
+.country-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dropdown-item { will-change: transform; transform: translateZ(0);
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: white;
+  background-color: transparent;
+  will-change: transform; transition: background-color 0.2s ease;
+  font-size: 1rem;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item.active {
+  background-color: rgba(0, 116, 217, 0.5);
+}
+
+.country-flag {
+  margin-right: 5px;
+  font-size: 1rem;
+}
+
+.country-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 5px;
+  font-size: 1rem;
+}
+
+.country-dial-code {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+/* Customize the input field */
+.input-group .form-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 0 0.25rem 0.25rem 0;
+  height: 48px;
+  border-left: none;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.input-group .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar styling */
+.country-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.country-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0 10px 10px 0;
+}
+
+.country-list::-webkit-scrollbar-thumb {
+  background: rgba(127, 219, 255, 0.5);
+  border-radius: 10px;
+}
+
+.country-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(127, 219, 255, 0.8);
+}

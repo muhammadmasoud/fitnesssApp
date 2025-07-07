@@ -1,0 +1,198 @@
+/* TrackOrderPublic.css */
+.tracking-form-container {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  align-self: flex-start;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tracking-form-intro {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tracking-form {
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tracking-form .form-label {
+  color: white;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.tracking-input { will-change: transform; transform: translateZ(0);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  will-change: transform; transition: all 0.3s ease;
+}
+
+.tracking-input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #0074D9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.tracking-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tracking-submit-btn { will-change: transform; transform: translateZ(0);
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  background-color: #0074D9;
+  border: none;
+  will-change: transform; transition: all 0.3s ease;
+}
+
+.tracking-submit-btn:hover:not(:disabled) {
+  background-color: #0066c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tracking-submit-btn:disabled {
+  background-color: rgba(0, 116, 217, 0.6);
+  cursor: not-allowed;
+}
+
+.tracking-form-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tracking-form-footer a {
+  color: #7FDBFF;
+  text-decoration: none;
+  will-change: transform; transition: all 0.3s ease;
+}
+
+.tracking-form-footer a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  padding: 0.8rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.back-to-search-btn { will-change: transform; transform: translateZ(0);
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  will-change: transform; transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 500;
+}
+
+.back-to-search-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  will-change: transform; transform: translateY(-2px);
+}
+
+.tracking-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-buttons-container {
+  display: flex;
+  gap: 15px;
+}
+
+.signup-btn { will-change: transform; transform: translateZ(0);
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  will-change: transform; transition: all 0.3s ease;
+  background-color: #0074D9;
+  color: white;
+  border: none;
+  font-weight: 500;
+}
+
+.signup-btn:hover {
+  background-color: #0066c0;
+  will-change: transform; transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn-track { will-change: transform; transform: translateZ(0);
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  will-change: transform; transition: all 0.3s ease;
+  background-color: transparent;
+  color: #0074D9;
+  border: 1px solid #0074D9;
+  font-weight: 500;
+}
+
+.login-btn-track:hover {
+  background-color: rgba(0, 116, 217, 0.1);
+  color: #0074D9;
+  will-change: transform; transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .tracking-form-container {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .tracking-form {
+    padding: 1rem;
+  }
+
+  .tracking-form-intro {
+    font-size: 1rem;
+  }
+
+  .tracking-card-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .auth-buttons-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .signup-btn, .login-btn-track {
+    flex: 1;
+  }
+}

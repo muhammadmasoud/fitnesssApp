@@ -1,0 +1,36 @@
+/* Position the toast container at the right-center of the page */
+.Toastify__toast-container {
+  position: fixed !important;
+  top: 50% !important;
+  right: 20px !important;
+  will-change: transform; transform: translateY(-50%) !important;
+  width: 320px !important;
+}
+
+/* Basic toast styling */
+.Toastify__toast {
+  border-radius: 4px !important;
+  padding: 12px !important;
+  margin-bottom: 10px !important;
+}
+
+/* Fix the toast body layout */
+.Toastify__toast-body {
+  display: flex !important;
+  align-items: flex-start !important;
+  padding-right: 20px !important;
+}
+
+/* Fix the close button to be on the same line as the first text line */
+.Toastify__close-button {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  color: black !important;
+}
+
+/* Ensure the progress bar is visible and works correctly */
+.Toastify__progress-bar {
+  height: 4px !important;
+  opacity: 1 !important;
+}
