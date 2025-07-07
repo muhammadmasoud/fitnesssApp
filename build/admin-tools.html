@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNESS Admin Tools</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ffc107;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #0056b3;
+            margin-top: 0;
+        }
+        button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #c82333;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+        .details {
+            margin-top: 10px;
+            font-family: monospace;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .counter {
+            font-weight: bold;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FITNESS Admin Tools</h1>
+
+        <div class="warning">
+            <strong>⚠️ WARNING:</strong> These actions are irreversible. Use these tools with extreme caution.
+            This page should only be accessed by authorized administrators.
+        </div>
+
+        <div class="section">
+            <h2>Storage Diagnostics</h2>
+            <p>This section shows the current state of localStorage and sessionStorage to help diagnose issues.</p>
+            <button id="diagnosticsBtn">Run Diagnostics</button>
+            <div id="diagnosticsResult" class="result">
+                <div id="diagnosticsMessage"></div>
+                <div id="diagnosticsDetails" class="details"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Delete All Order Tracking Information</h2>
+            <p>This will permanently delete all order tracking information for all users from localStorage.</p>
+            <button id="deleteOrdersBtn">Delete All Order Tracking Data</button>
+            <div id="ordersResult" class="result">
+                <div id="ordersMessage"></div>
+                <div id="ordersDetails" class="details"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Delete All User Accounts</h2>
+            <p>This will permanently delete all user accounts from localStorage.</p>
+            <button id="deleteAccountsBtn">Delete All User Accounts</button>
+            <div id="accountsResult" class="result">
+                <div id="accountsMessage"></div>
+                <div id="accountsDetails" class="details"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to delete all order tracking information
+        function deleteAllOrderTracking() {
+            if (!confirm('Are you sure you want to delete ALL order tracking information? This action cannot be undone.')) {
+                return;
+            }
+
+            try {
+                const result = {
+                    deletedItems: 0,
+                    details: []
+                };
+
+                // Find all keys in localStorage that might contain order information
+                const orderKeys = [];
+
+                // Check for user-specific order keys (userOrders_[userId])
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith('userOrders_')) {
+                        orderKeys.push(key);
+                    }
+                }
+
+                // Check for the orderMap (used for public tracking)
+                if (localStorage.getItem('orderMap')) {
+                    orderKeys.push('orderMap');
+                }
+
+                // Check for legacy userOrders
+                if (localStorage.getItem('userOrders')) {
+                    orderKeys.push('userOrders');
+                }
+
+                // Delete each order key and record details
+                orderKeys.forEach(key => {
+                    try {
+                        const value = localStorage.getItem(key);
+                        if (value) {
+                            let count = 1;
+                            try {
+                                const parsed = JSON.parse(value);
+                                if (Array.isArray(parsed)) {
+                                    count = parsed.length;
+                                } else if (typeof parsed === 'object') {
+                                    count = Object.keys(parsed).length;
+                                }
+                            } catch (e) {
+                                // If parsing fails, count as 1
+                            }
+
+                            result.details.push(`Deleted key: ${key} (contained ${count} order(s))`);
+                            result.deletedItems += count;
+                            localStorage.removeItem(key);
+                        }
+                    } catch (e) {
+                        result.details.push(`Error deleting key: ${key} - ${e.message}`);
+                    }
+                });
+
+                // Also check sessionStorage for completedOrder
+                if (sessionStorage.getItem('completedOrder')) {
+                    sessionStorage.removeItem('completedOrder');
+                    result.details.push('Deleted completedOrder from sessionStorage');
+                    result.deletedItems++;
+                }
+
+                // Display results
+                const resultElement = document.getElementById('ordersResult');
+                const messageElement = document.getElementById('ordersMessage');
+                const detailsElement = document.getElementById('ordersDetails');
+
+                resultElement.style.display = 'block';
+                resultElement.className = 'result success';
+
+                if (result.deletedItems > 0) {
+                    messageElement.innerHTML = `Successfully deleted <span class="counter">${result.deletedItems}</span> order tracking records.`;
+                    detailsElement.textContent = result.details.join('\n');
+                } else {
+                    messageElement.innerHTML = 'No order tracking data found to delete.';
+                    detailsElement.textContent = '';
+                }
+            } catch (error) {
+                const resultElement = document.getElementById('ordersResult');
+                const messageElement = document.getElementById('ordersMessage');
+                const detailsElement = document.getElementById('ordersDetails');
+
+                resultElement.style.display = 'block';
+                resultElement.className = 'result error';
+                messageElement.textContent = 'Error deleting order tracking data:';
+                detailsElement.textContent = error.message;
+            }
+        }
+
+        // Function to delete all user accounts
+        function deleteAllUserAccounts() {
+            if (!confirm('Are you sure you want to delete ALL user accounts? This action cannot be undone.')) {
+                return;
+            }
+
+            try {
+                const result = {
+                    deletedAccounts: 0,
+                    details: []
+                };
+
+                // Delete users from localStorage
+                const usersJson = localStorage.getItem('users');
+                if (usersJson) {
+                    try {
+                        const users = JSON.parse(usersJson);
+                        if (Array.isArray(users)) {
+                            result.deletedAccounts = users.length;
+                            result.details.push(`Deleted ${users.length} user accounts from localStorage`);
+
+                            // Optionally log details of deleted accounts (email only for privacy)
+                            users.forEach((user, index) => {
+                                if (user && user.email) {
+                                    result.details.push(`  ${index + 1}. ${user.email}`);
+                                }
+                            });
+                        }
+                    } catch (e) {
+                        result.details.push(`Error parsing users: ${e.message}`);
+                    }
+
+                    localStorage.removeItem('users');
+                }
+
+                // Clear current user from sessionStorage
+                if (sessionStorage.getItem('currentUser')) {
+                    sessionStorage.removeItem('currentUser');
+                    result.details.push('Cleared current user session');
+                }
+
+                // Display results
+                const resultElement = document.getElementById('accountsResult');
+                const messageElement = document.getElementById('accountsMessage');
+                const detailsElement = document.getElementById('accountsDetails');
+
+                resultElement.style.display = 'block';
+
+                if (result.deletedAccounts > 0) {
+                    resultElement.className = 'result success';
+                    messageElement.innerHTML = `Successfully deleted <span class="counter">${result.deletedAccounts}</span> user accounts.`;
+                    detailsElement.textContent = result.details.join('\n');
+                } else {
+                    resultElement.className = 'result success';
+                    messageElement.textContent = 'No user accounts found to delete.';
+                    detailsElement.textContent = '';
+                }
+            } catch (error) {
+                const resultElement = document.getElementById('accountsResult');
+                const messageElement = document.getElementById('accountsMessage');
+                const detailsElement = document.getElementById('accountsDetails');
+
+                resultElement.style.display = 'block';
+                resultElement.className = 'result error';
+                messageElement.textContent = 'Error deleting user accounts:';
+                detailsElement.textContent = error.message;
+            }
+        }
+
+        // Function to run diagnostics on localStorage and sessionStorage
+        function runDiagnostics() {
+            try {
+                const diagnostics = {
+                    localStorage: {
+                        totalItems: localStorage.length,
+                        keys: [],
+                        orderRelatedKeys: [],
+                        userRelatedKeys: []
+                    },
+                    sessionStorage: {
+                        totalItems: sessionStorage.length,
+                        keys: []
+                    }
+                };
+
+                // Get all localStorage keys
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    diagnostics.localStorage.keys.push(key);
+
+                    // Check if key is related to orders
+                    if (key && (key.startsWith('userOrders_') || key === 'orderMap' || key === 'userOrders')) {
+                        diagnostics.localStorage.orderRelatedKeys.push(key);
+                    }
+
+                    // Check if key is related to users
+                    if (key && (key === 'users')) {
+                        diagnostics.localStorage.userRelatedKeys.push(key);
+                    }
+                }
+
+                // Get all sessionStorage keys
+                for (let i = 0; i < sessionStorage.length; i++) {
+                    const key = sessionStorage.key(i);
+                    diagnostics.sessionStorage.keys.push(key);
+                }
+
+                // Display sample data for better understanding
+                const samples = {};
+
+                // Sample users data if exists
+                if (localStorage.getItem('users')) {
+                    try {
+                        const users = JSON.parse(localStorage.getItem('users'));
+                        samples.users = {
+                            count: Array.isArray(users) ? users.length : 'Not an array',
+                            sample: Array.isArray(users) && users.length > 0 ?
+                                   `First user email: ${users[0].email || 'N/A'}` : 'No users found'
+                        };
+                    } catch (e) {
+                        samples.users = { error: e.message };
+                    }
+                }
+
+                // Sample order data if exists
+                for (const key of diagnostics.localStorage.orderRelatedKeys) {
+                    try {
+                        const data = JSON.parse(localStorage.getItem(key));
+                        samples[key] = {
+                            type: Array.isArray(data) ? 'Array' : typeof data,
+                            count: Array.isArray(data) ? data.length :
+                                  (typeof data === 'object' ? Object.keys(data).length : 'N/A')
+                        };
+                    } catch (e) {
+                        samples[key] = { error: e.message };
+                    }
+                }
+
+                // Display results
+                const resultElement = document.getElementById('diagnosticsResult');
+                const messageElement = document.getElementById('diagnosticsMessage');
+                const detailsElement = document.getElementById('diagnosticsDetails');
+
+                resultElement.style.display = 'block';
+                resultElement.className = 'result success';
+
+                messageElement.innerHTML = `Found <span class="counter">${diagnostics.localStorage.totalItems}</span> items in localStorage and <span class="counter">${diagnostics.sessionStorage.totalItems}</span> items in sessionStorage.`;
+
+                let detailsText = '=== LOCALSTORAGE KEYS ===\n';
+                detailsText += diagnostics.localStorage.keys.join('\n');
+
+                detailsText += '\n\n=== SESSIONSTORAGE KEYS ===\n';
+                detailsText += diagnostics.sessionStorage.keys.join('\n');
+
+                detailsText += '\n\n=== ORDER RELATED KEYS ===\n';
+                detailsText += diagnostics.localStorage.orderRelatedKeys.length > 0 ?
+                              diagnostics.localStorage.orderRelatedKeys.join('\n') : 'None found';
+
+                detailsText += '\n\n=== USER RELATED KEYS ===\n';
+                detailsText += diagnostics.localStorage.userRelatedKeys.length > 0 ?
+                              diagnostics.localStorage.userRelatedKeys.join('\n') : 'None found';
+
+                detailsText += '\n\n=== SAMPLE DATA ===\n';
+                for (const [key, value] of Object.entries(samples)) {
+                    detailsText += `${key}: ${JSON.stringify(value, null, 2)}\n`;
+                }
+
+                detailsElement.textContent = detailsText;
+            } catch (error) {
+                const resultElement = document.getElementById('diagnosticsResult');
+                const messageElement = document.getElementById('diagnosticsMessage');
+                const detailsElement = document.getElementById('diagnosticsDetails');
+
+                resultElement.style.display = 'block';
+                resultElement.className = 'result error';
+                messageElement.textContent = 'Error running diagnostics:';
+                detailsElement.textContent = error.message;
+            }
+        }
+
+        // Add event listeners
+        document.getElementById('deleteOrdersBtn').addEventListener('click', deleteAllOrderTracking);
+        document.getElementById('deleteAccountsBtn').addEventListener('click', deleteAllUserAccounts);
+        document.getElementById('diagnosticsBtn').addEventListener('click', runDiagnostics);
+
+        // Add note about same-origin policy
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            const note = document.createElement('div');
+            note.className = 'warning';
+            note.innerHTML = '<strong>Note:</strong> This tool must be opened from the same domain/origin as your main application to access the same localStorage data. If you\'re opening this file directly (using file:// protocol), it won\'t be able to access localStorage from your application running on a web server.';
+            container.insertBefore(note, container.children[1]);
+        });
+    </script>
+</body>
+</html>

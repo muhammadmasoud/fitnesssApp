@@ -1,0 +1,1 @@
+import{k as r}from"./vendor-react-C95WtIVY.js";const o={position:"top-right",autoClose:2e3,hideProgressBar:!1,closeOnClick:!0,pauseOnHover:!0,draggable:!0},s={success:(s,e={})=>r.success(s,{...o,...e}),info:(s,e={})=>r.info(s,{...o,...e}),error:(s,e={})=>r.error(s,{...o,...e}),warning:(s,e={})=>r.warning(s,{...o,...e})};export{s as C};

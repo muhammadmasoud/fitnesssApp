@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Fitness Tracker - Track your workouts and fitness journey"
+    />
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages or Vercel
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <!-- End Single Page Apps for GitHub Pages -->
+    <link rel="apple-touch-icon" href="./logo192.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="./src/assets/images/logo.gif" as="image" type="image/gif">
+    <link rel="preload" href="data:text/jsx;base64,aW1wb3J0IHsgRnJhZ21lbnQgfSBmcm9tICdyZWFjdCc7DQppbXBvcnQgUmVhY3RET00gZnJvbSAncmVhY3QtZG9tL2NsaWVudCc7DQppbXBvcnQgeyBCcm93c2VyUm91dGVyIH0gZnJvbSAncmVhY3Qtcm91dGVyLWRvbSc7DQppbXBvcnQgeyBQcm92aWRlciB9IGZyb20gJ3JlYWN0LXJlZHV4JzsNCmltcG9ydCBzdG9yZSBmcm9tICcuL3N0b3JlJzsNCmltcG9ydCBBcHAgZnJvbSAnLi9BcHAuanN4JzsNCg0KLy8gU2VydmljZSBXb3JrZXIgUmVnaXN0cmF0aW9uDQpjb25zdCByZWdpc3RlclNlcnZpY2VXb3JrZXIgPSAoKSA9PiB7DQogIGlmICgnc2VydmljZVdvcmtlcicgaW4gbmF2aWdhdG9yKSB7DQogICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ2xvYWQnLCAoKSA9PiB7DQogICAgICBuYXZpZ2F0b3Iuc2VydmljZVdvcmtlci5yZWdpc3RlcignL3NlcnZpY2Utd29ya2VyLmpzJykNCiAgICAgICAgLnRoZW4ocmVnaXN0cmF0aW9uID0+IHsNCiAgICAgICAgICBjb25zb2xlLmxvZygnU2VydmljZVdvcmtlciByZWdpc3RyYXRpb24gc3VjY2Vzc2Z1bCB3aXRoIHNjb3BlOiAnLCByZWdpc3RyYXRpb24uc2NvcGUpOw0KICAgICAgICB9KQ0KICAgICAgICAuY2F0Y2goZXJyb3IgPT4gew0KICAgICAgICAgIGNvbnNvbGUubG9nKCdTZXJ2aWNlV29ya2VyIHJlZ2lzdHJhdGlvbiBmYWlsZWQ6ICcsIGVycm9yKTsNCiAgICAgICAgfSk7DQogICAgfSk7DQogIH0NCn07DQoNCmltcG9ydCB7IE1vZGFsUHJvdmlkZXIgfSBmcm9tICcuL2NvbnRleHRzL01vZGFsQ29udGV4dCc7DQppbXBvcnQgeyBGb3JtUHJvdmlkZXIgfSBmcm9tICcuL2NvbnRleHRzL0Zvcm1Db250ZXh0JzsNCmltcG9ydCB7IE5vdGlmaWNhdGlvblByb3ZpZGVyIH0gZnJvbSAnLi9jb250ZXh0cy9Ob3RpZmljYXRpb25Db250ZXh0JzsNCmltcG9ydCAnYm9vdHN0cmFwL2Rpc3QvY3NzL2Jvb3RzdHJhcC5taW4uY3NzJzsNCmltcG9ydCAnLi9pbmRleC5jc3MnOw0KDQppbXBvcnQgeyBUb2FzdENvbnRhaW5lciB9IGZyb20gJ3JlYWN0LXRvYXN0aWZ5JzsNCmltcG9ydCAncmVhY3QtdG9hc3RpZnkvZGlzdC9SZWFjdFRvYXN0aWZ5LmNzcyc7DQppbXBvcnQgJy4vc3R5bGVzL3RvYXN0LWN1c3RvbS5jc3MnOw0KDQpjb25zdCByb290ID0gUmVhY3RET00uY3JlYXRlUm9vdChkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncm9vdCcpKTsNCnJvb3QucmVuZGVyKA0KICA8UHJvdmlkZXIgc3RvcmU9e3N0b3JlfT4NCiAgICA8QnJvd3NlclJvdXRlcj4NCiAgICAgIDxOb3RpZmljYXRpb25Qcm92aWRlcj4NCiAgICAgICAgPEZvcm1Qcm92aWRlcj4NCiAgICAgICAgICA8TW9kYWxQcm92aWRlcj4NCiAgICAgICAgICAgIDxGcmFnbWVudD4NCiAgICAgICAgICAgICAgPEFwcCAvPg0KICAgICAgICAgICAgICA8VG9hc3RDb250YWluZXIgLz4NCiAgICAgICAgICAgIDwvRnJhZ21lbnQ+DQogICAgICAgICAgPC9Nb2RhbFByb3ZpZGVyPg0KICAgICAgICA8L0Zvcm1Qcm92aWRlcj4NCiAgICAgIDwvTm90aWZpY2F0aW9uUHJvdmlkZXI+DQogICAgPC9Ccm93c2VyUm91dGVyPg0KICA8L1Byb3ZpZGVyPg0KKTsNCg0KLy8gUmVnaXN0ZXIgc2VydmljZSB3b3JrZXIgZm9yIHByb2R1Y3Rpb24NCmlmIChwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gJ3Byb2R1Y3Rpb24nKSB7DQogIHJlZ2lzdGVyU2VydmljZVdvcmtlcigpOw0KfQ==" as="script" type="module">
+    <link rel="preload" href="./assets/jsx/App-Dk6QufVn.jsx" as="script" type="module">
+
+    <!-- Resource hints for external resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Prefetch common navigation paths -->
+    <link rel="prefetch" href="./assets/jsx/Dashboard-Cayk_X_L.jsx" as="script" type="module">
+    <link rel="prefetch" href="./assets/jsx/Profile-Cs_SZBAg.jsx" as="script" type="module">
+    <link rel="prefetch" href="./assets/jsx/Classes-0oFvVJO8.jsx" as="script" type="module">
+
+    <!-- Preload critical CSS -->
+
+    <title>FITNESS</title>
+    <script type="module" crossorigin src="./assets/js/index-DIHz8AYB.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/js/vendor-C7HAvJE2.js">
+    <link rel="modulepreload" crossorigin href="./assets/js/vendor-icons-B8evvvES.js">
+    <link rel="modulepreload" crossorigin href="./assets/js/vendor-charts-DOFSg3Ya.js">
+    <link rel="modulepreload" crossorigin href="./assets/js/vendor-react-C95WtIVY.js">
+    <link rel="stylesheet" crossorigin href="./assets/css/vendor-react-kJXbQ7He.css">
+    <link rel="stylesheet" crossorigin href="./assets/css/index-vjOeOQT2.css">
+    <link rel="stylesheet" crossorigin href="./assets/css/vendor-ui-COn20UU0.css">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+import{a as o}from"./vendor-react-C95WtIVY.js";import{F as r,N as t}from"./index-DIHz8AYB.js";const e=()=>{const t=o.useContext(r);if(void 0===t)throw new Error("useForm must be used within a FormProvider");return t},i=()=>{const r=o.useContext(t);if(void 0===r)throw new Error("useNotification must be used within a NotificationProvider");return r};export{i as a,e as u};

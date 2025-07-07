@@ -1,0 +1,1 @@
+import{a as o}from"./vendor-react-C95WtIVY.js";import{M as r}from"./index-DIHz8AYB.js";const e=()=>{const e=o.useContext(r);if(void 0===e)throw new Error("useModal must be used within a ModalProvider");return e};export{e as u};
